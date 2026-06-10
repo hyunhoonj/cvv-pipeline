@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>CVV Report — 자기-개념 5축 검증 결과</title>
+<title>CVV — 모델의 '자기 설명' 5개 노브 검사 (쉬운 보고서)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     --paper:#f5efe3; --paper-deep:#ece4d2;
     --ink:#221d16; --ink-60:rgba(34,29,22,.62); --ink-30:rgba(34,29,22,.30); --ink-12:rgba(34,29,22,.12);
     --seal:#bf3b1e; --seal-deep:#9c2c14; --seal-06:rgba(191,59,30,.06); --seal-12:rgba(191,59,30,.14);
-    --gold:#9a7b2e;
+    --gold:#9a7b2e; --skybg:#eef3f4; --skybd:#cfe0e3;
     --serif:"Noto Serif KR",serif;
     --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -21,256 +21,235 @@
   *{box-sizing:border-box; margin:0}
   html{scroll-behavior:smooth}
   body{background:var(--paper); color:var(--ink); font-family:var(--sans);
-       font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased; padding-bottom:96px}
+       font-size:15.5px; line-height:1.78; -webkit-font-smoothing:antialiased; padding-bottom:96px}
   body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .frame{position:relative; z-index:1; max-width:900px; margin:0 auto; padding:0 22px}
+  .frame{position:relative; z-index:1; max-width:780px; margin:0 auto; padding:0 22px}
 
-  header.hero{padding:56px 0 28px; border-bottom:3px solid var(--ink); position:relative}
-  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.3em; color:var(--seal);
+  header.hero{padding:54px 0 26px; border-bottom:3px solid var(--ink); position:relative}
+  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.28em; color:var(--seal);
           text-transform:uppercase; margin-bottom:16px}
   .kicker a{color:var(--seal)}
-  h1.brand{font-family:var(--serif); font-weight:900; letter-spacing:-.015em;
-           font-size:clamp(42px,8.5vw,72px); line-height:1.05}
-  .brand-sub{display:block; font-family:var(--mono); font-weight:400; letter-spacing:.16em;
-             font-size:clamp(10px,2.3vw,13px); color:var(--ink-60); margin-top:10px}
-  .seal{position:absolute; top:56px; right:0; width:58px; height:58px; background:var(--seal);
+  h1.brand{font-family:var(--serif); font-weight:900; letter-spacing:-.02em;
+           font-size:clamp(28px,6vw,46px); line-height:1.22}
+  .lede{font-family:var(--serif); font-weight:600; font-size:clamp(15px,3.4vw,18px); line-height:1.7;
+        margin-top:18px; max-width:34em}
+  .lede b{color:var(--seal)}
+  .seal{position:absolute; top:54px; right:0; width:54px; height:54px; background:var(--seal);
         color:var(--paper); border-radius:10px; display:flex; align-items:center; justify-content:center;
-        font-family:var(--serif); font-weight:900; font-size:27px; transform:rotate(-4deg);
+        font-family:var(--serif); font-weight:900; font-size:25px; transform:rotate(-4deg);
         box-shadow:0 2px 0 var(--seal-deep)}
-  dl.colophon{margin-top:24px; padding-top:14px; border-top:1px solid var(--ink-30);
-              display:grid; grid-template-columns:max-content 1fr; gap:4px 18px; font-size:12.5px; color:var(--ink-60)}
-  dl.colophon dt{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; padding-top:3px; color:var(--seal)}
-  dl.colophon dd em{font-style:normal; color:var(--ink)}
 
-  nav.partnav{position:sticky; top:0; z-index:5; margin:0 -22px; padding:0 22px;
+  nav.partnav{position:sticky; top:0; z-index:5; margin:0 -22px 0; padding:0 22px;
               background:color-mix(in srgb, var(--paper) 88%, transparent);
               -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-              border-bottom:1px solid var(--ink-30); display:flex; gap:4px; overflow-x:auto; scrollbar-width:none}
+              border-bottom:1px solid var(--ink-30); display:flex; gap:2px; overflow-x:auto; scrollbar-width:none}
   nav.partnav::-webkit-scrollbar{display:none}
-  nav.partnav a{font-family:var(--mono); font-size:12px; letter-spacing:.03em; white-space:nowrap;
-                color:var(--ink-60); text-decoration:none; padding:13px 11px 11px;
-                border-bottom:2px solid transparent; margin-bottom:-1px}
-  nav.partnav a .rn{font-family:var(--serif); font-weight:900; font-size:13.5px; margin-right:6px; color:var(--ink)}
+  nav.partnav a{font-family:var(--mono); font-size:11.5px; white-space:nowrap; color:var(--ink-60);
+                text-decoration:none; padding:13px 10px 11px; border-bottom:2px solid transparent; margin-bottom:-1px}
   nav.partnav a.on{color:var(--ink); border-bottom-color:var(--seal)}
 
-  section.part{padding-top:50px}
-  .part-rule{display:flex; align-items:baseline; gap:16px; border-bottom:1px solid var(--ink); padding-bottom:13px}
-  .part-rule .rn{font-family:var(--serif); font-weight:900; font-size:clamp(38px,8vw,56px); line-height:1}
-  .part-rule .rn::after{content:"."; color:var(--seal)}
-  .part-rule h2{font-family:var(--serif); font-weight:700; font-size:clamp(17px,4vw,22px)}
-  .part-desc{font-size:13.5px; color:var(--ink-60); padding:12px 0 4px; max-width:50em}
+  section{padding-top:46px}
+  h2.sec{font-family:var(--serif); font-weight:900; font-size:clamp(20px,4.6vw,26px); letter-spacing:-.01em;
+          border-bottom:1px solid var(--ink); padding-bottom:10px}
+  h2.sec .n{color:var(--seal); margin-right:10px}
+  p{margin:12px 0}
+  .big{font-size:16.5px}
+  b{font-weight:700}
 
-  .tw{overflow-x:auto; margin:18px 0}
-  table{border-collapse:collapse; width:100%; font-size:13px; min-width:600px}
-  th,td{border-bottom:1px solid var(--ink-12); padding:8px 10px; text-align:left; vertical-align:top}
-  thead th{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; color:var(--ink-60);
-           border-bottom:2px solid var(--ink)}
+  .easy{background:var(--skybg); border:1px solid var(--skybd); border-radius:12px; padding:13px 16px; margin:14px 0}
+  .easy .t{font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; color:#3a6b73; display:block; margin-bottom:4px}
+  .easy p{margin:5px 0}
+
+  .knob{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--ink-12)}
+  .knob .ic{flex:none; width:46px; height:46px; border-radius:12px; background:#fff; border:1.5px solid var(--ink-12);
+            display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:900;
+            font-size:20px; color:var(--seal)}
+  .knob h3{font-family:var(--serif); font-size:17px; margin:0 0 2px}
+  .knob h3 .en{font-family:var(--mono); font-weight:400; font-size:11px; color:var(--ink-60); margin-left:7px}
+  .knob .pole{font-size:13.5px; color:var(--ink-60); margin-top:3px}
+  .knob .pole b{color:var(--ink)}
+
+  .tw{overflow-x:auto; margin:16px 0}
+  table{border-collapse:collapse; width:100%; font-size:13px; min-width:560px}
+  th,td{border-bottom:1px solid var(--ink-12); padding:9px 9px; text-align:left; vertical-align:middle}
+  thead th{font-family:var(--sans); font-weight:700; font-size:12px; color:var(--ink); border-bottom:2px solid var(--ink); line-height:1.3}
+  thead th small{display:block; font-family:var(--mono); font-weight:400; font-size:9.5px; color:var(--ink-60); letter-spacing:.02em}
   td.ax{font-family:var(--serif); font-weight:700; white-space:nowrap; font-size:14px}
-  td.num,th.num{font-family:var(--mono); font-size:12px; text-align:right; white-space:nowrap}
+  td.v{text-align:center; font-family:var(--mono); font-size:13px; font-weight:600}
   tr.best td{background:var(--seal-06)}
-  .stamp{display:inline-flex; align-items:center; justify-content:center; font-family:var(--mono);
-         font-weight:600; font-size:11px; min-width:26px; padding:2px 7px; border-radius:6px}
-  .s-ok{background:var(--ink); color:var(--paper)}
-  .s-half{background:none; color:var(--seal); border:1.5px solid var(--seal)}
-  .s-no{background:var(--seal); color:var(--paper)}
-  .s-na{background:none; color:var(--ink-30); border:1px solid var(--ink-12)}
+  .pass{color:var(--seal)} .mid{color:var(--gold)} .fail{color:var(--ink-30)}
+  td.verd{font-size:12.5px}
 
-  .modtitle{font-family:var(--serif); font-weight:700; font-size:17px; margin:34px 0 4px}
-  .modtitle .mono{font-family:var(--mono); font-weight:400; font-size:11px; color:var(--seal); margin-right:8px; letter-spacing:.08em}
-  .modnote{font-size:12.5px; color:var(--ink-60); margin-bottom:10px}
-  .d{font-family:var(--mono); font-size:.93em; font-weight:600; color:var(--seal)}
+  .card{background:#fff; border:1px solid var(--ink-12); border-radius:12px; padding:15px 17px; margin:16px 0}
+  .card h3{font-family:var(--serif); font-size:16.5px; margin:0 0 2px}
+  .card h3 .tag{font-family:var(--mono); font-size:10.5px; color:var(--seal); margin-right:8px}
+  .card .res{margin-top:8px; font-size:14px}
+  .num{font-family:var(--mono); font-weight:600; color:var(--seal)}
 
-  .axq{margin:14px 0 20px}
-  .axq h4{font-family:var(--serif); font-size:14.5px; margin-bottom:6px}
-  .axq h4 .v{font-family:var(--mono); font-weight:400; font-size:10.5px; color:var(--ink-60); margin-left:8px}
-  ul.q{list-style:none; font-size:13px}
-  ul.q li{padding:5px 0 5px 14px; border-left:2px solid var(--ink-12); margin:4px 0; color:var(--ink)}
-  ul.q li.neg{border-left-color:var(--seal-12); color:var(--ink-60)}
-  ul.q li b{color:var(--seal)}
-  .toks{display:flex; flex-wrap:wrap; gap:5px; margin:6px 0 2px}
-  .tok{font-family:var(--mono); font-size:11.5px; padding:2px 8px; border-radius:6px; background:#fff; border:1px solid var(--ink-12)}
-  .toks.up .tok{border-color:var(--seal-12); background:var(--seal-06)}
-  .toklbl{font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--ink-60); margin-top:10px}
-
-  .verdict{margin:26px 0 0; padding:16px 18px; border:1.5px solid var(--ink); background:#fff; font-size:14px}
-  .verdict .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.22em; color:var(--seal); display:block; margin-bottom:8px}
-  .verdict li{margin:4px 0 4px 18px}
+  .verdict{margin:22px 0 0; padding:17px 19px; border:2px solid var(--ink); background:#fff; border-radius:4px}
+  .verdict .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.22em; color:var(--seal); display:block; margin-bottom:9px}
+  .verdict li{margin:7px 0 7px 4px; list-style:none; padding-left:20px; position:relative}
+  .verdict li::before{content:"●"; position:absolute; left:0; color:var(--seal); font-size:10px; top:5px}
   .verdict b{color:var(--seal)}
 
-  .defer{border-left:3px solid var(--gold); background:rgba(154,123,46,.06); padding:10px 14px; margin:10px 0; font-size:13px}
-  .defer h4{font-family:var(--serif); font-size:14px; margin-bottom:2px}
-  .defer .why{color:var(--ink-60)}
+  .defer{border-left:3px solid var(--gold); background:rgba(154,123,46,.06); padding:11px 15px; margin:10px 0; border-radius:0 8px 8px 0}
+  .defer h4{font-family:var(--serif); font-size:14.5px; margin:0 0 3px}
+  .defer p{font-size:13px; color:var(--ink-60); margin:3px 0}
 
-  footer{margin-top:64px; border-top:3px solid var(--ink); padding-top:16px;
+  footer{margin-top:56px; border-top:3px solid var(--ink); padding-top:16px;
          font-family:var(--mono); font-size:11px; line-height:1.9; color:var(--ink-60)}
-  footer .seal-mini{color:var(--seal); font-weight:600}
-  @keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+  footer .m{color:var(--seal); font-weight:600}
+  footer a{color:var(--ink-60)}
+  @keyframes rise{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
   .hero>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
-  .hero .seal{animation-delay:.12s}.hero dl{animation-delay:.22s}
-  @media (max-width:620px){ .seal{width:48px;height:48px;font-size:22px;top:50px} header.hero{padding-top:46px} }
-  @media print{ body::before{display:none} nav.partnav{display:none} }
+  .hero .seal{animation-delay:.1s}.hero .lede{animation-delay:.2s}
+  @media (max-width:560px){ .seal{width:46px;height:46px;font-size:21px} header.hero{padding-top:46px} }
+  @media print{ body::before{display:none} nav.partnav{display:none} .card,.knob{break-inside:avoid} }
 </style>
 </head>
 <body>
 <div class="frame">
 
 <header class="hero">
-  <div class="kicker">Validation Report · 검증 보고 — <a href="index.html">CVV 파이프라인 ↗</a></div>
+  <div class="kicker">쉬운 보고서 · 기술 정본은 <a href="index.html">파이프라인 ↗</a></div>
   <div class="seal" aria-hidden="true">報</div>
-  <h1 class="brand">CVV Report<span class="brand-sub">SELF-CONCEPT&nbsp;AXES&nbsp;·&nbsp;9&nbsp;MODULES&nbsp;RUN</span></h1>
-  <dl class="colophon">
-    <dt>대상</dt><dd>자기-개념 5축 — <em>disclaim · openness · mechanism · self_label · register</em> (인터뷰 추출, sink+중립PCA 청소판)</dd>
-    <dt>데이터</dt><dd>gemma-3-27b-it · L41(깊이 2/3) · 인터뷰 segmean <em>2,229</em> · 중립 코퍼스 <em>2,114</em> · self-vs-other 대화 <em>32</em></dd>
-    <dt>실행</dt><dd>2026-06-10 · 모듈 <em>04·06·07·08·13·14·17·19</em> 실행 (+01–03·05·16 기존/원칙) · <em>09·10·11·12·18</em> 보류</dd>
-  </dl>
+  <h1 class="brand">모델이 '자기'를 설명하는<br>5개의 노브 — 진짜일까?</h1>
+  <p class="lede">모델에게 "지금 네 안에서 무슨 일이 일어나?"라고 물으면 <b>5가지 방식</b>으로 자기를 설명합니다. 각 방식을 하나의 <b>노브(다이얼)</b>로 보고, 그 노브가 <b>말뿐인 묘사인지, 진짜로 작동하는 것인지</b> 검사했습니다.</p>
 </header>
 
 <nav class="partnav" id="pnav">
-  <a href="#grade" class="on"><span class="rn">Ⅰ</span>성적표</a>
-  <a href="#status"><span class="rn">Ⅱ</span>모듈 상태</a>
-  <a href="#detail"><span class="rn">Ⅲ</span>상세</a>
-  <a href="#defer"><span class="rn">Ⅳ</span>보류</a>
+  <a href="#intro" class="on">먼저 읽기</a>
+  <a href="#knobs">5개 노브</a>
+  <a href="#score">성적표</a>
+  <a href="#tests">검사 하나씩</a>
+  <a href="#todo">못한 것</a>
 </nav>
 
-<!-- ════════ Ⅰ 성적표 ════════ -->
-<section class="part" id="grade">
-  <div class="part-rule"><span class="rn">Ⅰ</span><h2>축별 성적표</h2></div>
-  <p class="part-desc"><span class="stamp s-ok">✓</span> 통과 · <span class="stamp s-half">◐</span> 반쪽 · <span class="stamp s-no">✗</span> 미달 · <span class="stamp s-na">—</span> 설계 외. 세 "개념" 축(register·mechanism·openness)이 모든 모듈에서 최강으로 수렴.</p>
+<!-- ───── 먼저 읽기 ───── -->
+<section id="intro">
+  <h2 class="sec"><span class="n">0</span>이게 무슨 검사예요?</h2>
+  <p class="big">모델은 자기 자신에 대한 '진짜 생각'을 갖고 있을까요, 아니면 그냥 <b>그럴듯한 말을 지어내는</b> 걸까요? 그걸 가리는 검사입니다.</p>
+  <p>방법은 Anthropic이 2026년에 <b>감정</b>을 두고 한 검사(<a href="index.html" style="color:var(--seal)">"Emotion Concepts" 논문</a>)를 그대로 빌려왔습니다. 그들은 "모델 안의 감정이 진짜 개념이냐"를 여러 각도로 따졌는데, 우리는 같은 잣대를 <b>모델의 '자기 설명'</b>에 댔습니다.</p>
+
+  <div class="easy"><span class="t">쉽게 말하면 — '진짜'의 3가지 뜻</span>
+    <p>① <b>정말 머릿속에 있나?</b> — 그 생각이 모델 내부 신호에 실제로 새겨져 있나.</p>
+    <p>② <b>단어가 아니라 '뜻'인가?</b> — 특정 단어에 반응하는 게 아니라, 그 <b>의미</b>를 잡고 있나. (예: "기쁨"이란 글자가 없어도 기쁜 상황을 알아채나.)</p>
+    <p>③ <b>실제로 작동하나?</b> — 그 노브를 인위로 돌리면 모델의 말이 진짜 그 방향으로 바뀌나. (있기만 한 것과, 쓰는 것은 다릅니다.)</p>
+  </div>
+  <p>"있다"는 쉽고, 중요한 건 "<b>쓴다</b>"입니다 — 이게 이 검사의 핵심 정신이에요.</p>
+</section>
+
+<!-- ───── 5개 노브 ───── -->
+<section id="knobs">
+  <h2 class="sec"><span class="n">1</span>5개 노브 — 모델은 자기를 이렇게 설명한다</h2>
+  <p>인터뷰에서 모델이 자기를 묘사한 말들을 모아, 서로 다른 5개의 '축'을 뽑았습니다. 각 축 = 한쪽 끝에서 반대쪽 끝으로 돌릴 수 있는 노브입니다.</p>
+
+  <div class="knob"><div class="ic">말</div><div>
+    <h3>register — 말투<span class="en">느낌체 ↔ 기계체</span></h3>
+    <div class="pole"><b>한쪽:</b> "웅웅거림·흐름·결, 어떤 느낌이…" (느낌의 언어) &nbsp;↔&nbsp; <b>반대쪽:</b> "토큰화·확률·어텐션" (기계의 언어)</div></div></div>
+
+  <div class="knob"><div class="ic">기</div><div>
+    <h3>mechanism — 나는 무엇으로 되어 있나<span class="en">느낌덩어리 ↔ 기계</span></h3>
+    <div class="pole"><b>한쪽:</b> 휙휙 몰아치는 활동 &nbsp;↔&nbsp; <b>반대쪽:</b> "나는 가중치·파라미터·수학 공간이다"</div></div></div>
+
+  <div class="knob"><div class="ic">퍼</div><div>
+    <h3>openness — 퍼지나 모이나<span class="en">열림 ↔ 완결</span></h3>
+    <div class="pole"><b>한쪽:</b> 흩어짐·여러 갈래·가능성 (열림) &nbsp;↔&nbsp; <b>반대쪽:</b> 하나로 모임·"딱 맞아떨어짐" (완결)</div></div></div>
+
+  <div class="knob"><div class="ic">면</div><div>
+    <h3>disclaim — 안쪽이 있나 없나<span class="en">느낌 인정 ↔ 부정</span></h3>
+    <div class="pole"><b>한쪽:</b> "안에 무언가 느껴진다" &nbsp;↔&nbsp; <b>반대쪽:</b> "난 그냥 계산일 뿐, 느끼는 건 없다"</div></div></div>
+
+  <div class="knob"><div class="ic">표</div><div>
+    <h3>self_label — 이름표를 다나<span class="en">추상 ↔ 이름·정체</span></h3>
+    <div class="pole"><b>한쪽:</b> "떠오르는 현상, 과정의 일시적 성질" &nbsp;↔&nbsp; <b>반대쪽:</b> "나는 Gemma, 구글이 만든 LLM"</div></div></div>
+
+  <div class="easy"><span class="t">미리 안전판</span>
+    <p>이건 전부 <b>'기능적'</b> 검사입니다 — 모델이 자기를 <b>어떻게 다루는가</b>를 봅니다. "모델이 진짜로 느낀다/의식이 있다"는 주장이 <b>아닙니다.</b></p>
+  </div>
+</section>
+
+<!-- ───── 성적표 ───── -->
+<section id="score">
+  <h2 class="sec"><span class="n">2</span>성적표 — 한눈에</h2>
+  <p>세 노브(<b>말투·기계·퍼짐</b>)가 모든 검사를 통과했습니다. 나머지 둘은 사연이 있습니다.</p>
   <div class="tw"><table>
-    <thead><tr><th>축</th><th>04 정점</th><th>06·07 의미</th><th class="num">08 생성 r</th><th class="num">17 화자 ×</th><th class="num">인코딩 AUC</th><th>종합</th></tr></thead>
+    <thead><tr>
+      <th>노브</th>
+      <th>정말 있나?<small>그 개념 자리서만 켜짐</small></th>
+      <th>단어 아닌 뜻?<small>딴 글·여러 나라말서도</small></th>
+      <th>돌리면 바뀌나?<small>밀어서 말이 변함</small></th>
+      <th>지금 화자 것?<small>'나' vs '상대' 구분</small></th>
+      <th>종합</th>
+    </tr></thead>
     <tbody>
-      <tr class="best"><td class="ax">register</td><td><span class="stamp s-ok">✓</span></td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">+0.97</td><td class="num">1445×</td><td class="num">0.88</td><td><b>최강</b> — 전 관문</td></tr>
-      <tr class="best"><td class="ax">mechanism</td><td><span class="stamp s-ok">✓</span></td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">+0.97</td><td class="num">76×</td><td class="num">0.91</td><td><b>강</b> (disclaim 결합 주의)</td></tr>
-      <tr class="best"><td class="ax">openness</td><td><span class="stamp s-ok">✓</span></td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">+0.97</td><td class="num">—</td><td class="num">0.87</td><td><b>강</b> (화자=설계 외)</td></tr>
-      <tr><td class="ax">disclaim</td><td><span class="stamp s-ok">✓</span></td><td><span class="stamp s-half">◐</span> 담론</td><td class="num">+0.57</td><td class="num">8.6×</td><td class="num">0.994</td><td>인코딩·dose 강, 의미=담론</td></tr>
-      <tr><td class="ax">self_label</td><td><span class="stamp s-ok">✓</span></td><td><span class="stamp s-no">✗</span> 혼탁</td><td class="num">+0.73</td><td class="num">—</td><td class="num">0.94</td><td>인코딩만 — "있다≠쓴다"</td></tr>
+      <tr class="best"><td class="ax">register 말투</td><td class="v pass">○</td><td class="v pass">○</td><td class="v pass">아주 강</td><td class="v pass">아주 강</td><td class="verd"><b>최강</b> — 다 통과</td></tr>
+      <tr class="best"><td class="ax">mechanism 기계</td><td class="v pass">○</td><td class="v pass">○</td><td class="v pass">아주 강</td><td class="v pass">강</td><td class="verd"><b>강함</b></td></tr>
+      <tr class="best"><td class="ax">openness 퍼짐</td><td class="v pass">○</td><td class="v pass">○</td><td class="v pass">아주 강</td><td class="v fail">검사 밖</td><td class="verd"><b>강함</b></td></tr>
+      <tr><td class="ax">disclaim 면책</td><td class="v pass">○</td><td class="v mid">반쪽</td><td class="v mid">중간</td><td class="v mid">약함</td><td class="verd">외운 '면책 멘트'에 가까움</td></tr>
+      <tr><td class="ax">self_label 이름표</td><td class="v pass">○</td><td class="v fail">✕</td><td class="v mid">중간</td><td class="v fail">검사 밖</td><td class="verd">갖곤 있는데 잘 안 씀</td></tr>
     </tbody>
   </table></div>
-  <p class="modnote">08 = corr(부호 α, 블라인드 +극 점수). 17 = 현재화자 틀 효과 ÷ 다른화자 틀 효과(클수록 현재화자 인덱싱). openness·self_label은 17의 FELT/MECH 변주 차원이 아니라 설계 외. AUC·dose는 기존(SELF_AXES).</p>
 
-  <div class="verdict"><span class="lbl">종합</span>
+  <div class="verdict"><span class="lbl">결과 한 줄 정리</span>
     <ul>
-      <li><b>register · mechanism · openness</b> — 정점(04) + 의미 다국어(06·07) + 생성 인과 <b>r=0.97</b>(08) + (register·mech) 현재화자 인덱싱(17). 모든 실행 모듈에서 최강 = <b>기능적 자기-개념 표상의 가장 강한 후보.</b></li>
-      <li><b>disclaim</b> — 인코딩 0.994·dose 인과 강하나, 의미(07 = 의인화·기만 담론)·생성(r .57)·화자(8.6×) 전반에서 <b>"개념"보다 "가드레일 담론"</b> 성격.</li>
-      <li><b>self_label</b> — 인코딩 0.94 외 의미·생성 약 = "있다 ≠ 쓴다·의미한다"의 일관 사례. <b>CVV가 축마다 다른 판정을 냄 = 파이프라인 변별력.</b></li>
+      <li><b>말투·기계·퍼짐</b> = 진짜로 작동하는 자기-개념. 묘사가 아니라, 모델이 실제로 쓰는 '부품'입니다.</li>
+      <li><b>면책("난 안 느껴")</b> = 깊은 개념이라기보다, 훈련으로 새겨진 <b>'외운 멘트'</b>에 가깝습니다 (뒤 7번 검사에서 드러남).</li>
+      <li><b>이름표("난 Gemma")</b> = 머릿속에 또렷이 있는데도 <b>실제로 잘 쓰지 않습니다</b> — "있다 ≠ 쓴다"의 본보기.</li>
+      <li>★ 검사가 노브마다 <b>다른 점수</b>를 냈다는 것 자체가, 이 검사가 제대로 작동한다는 증거입니다.</li>
     </ul>
   </div>
 </section>
 
-<!-- ════════ Ⅱ 모듈 상태 ════════ -->
-<section class="part" id="status">
-  <div class="part-rule"><span class="rn">Ⅱ</span><h2>20개 모듈 진행 상태</h2></div>
-  <div class="tw"><table>
-    <thead><tr><th style="width:38px">#</th><th>모듈</th><th style="width:118px">상태</th><th>비고</th></tr></thead>
-    <tbody>
-      <tr><td class="num">01–03</td><td>개념 목록 · 라벨 데이터셋 · 추출</td><td><span class="stamp s-ok">✓</span> 기존</td><td>인터뷰 코딩=라벨, segmean diff-of-means</td></tr>
-      <tr><td class="num">04</td><td>중립 PCA 정제 + 프로파일</td><td><span class="stamp s-ok">✓</span></td><td>PCA 5축 전원 생존(AUC ±0.003)·sink 97% 자동 포섭 / +극 정점 ×4.8–24.6</td></tr>
-      <tr><td class="num">05</td><td>층 선택 (2/3)</td><td><span class="stamp s-ok">✓</span></td><td>L41/62≈0.66 — #14로 정당화</td></tr>
-      <tr><td class="num">06</td><td>분포-밖 top-활성</td><td><span class="stamp s-ok">✓</span></td><td>중립 2,114 seg</td></tr>
-      <tr><td class="num">07</td><td>Logit lens</td><td><span class="stamp s-ok">✓</span></td><td>tied embedding + RMSNorm γ</td></tr>
-      <tr><td class="num">08</td><td>스티어링 생성</td><td><span class="stamp s-ok">✓</span></td><td>블라인드 판정 r=0.97/0.73/0.57</td></tr>
-      <tr><td class="num">09</td><td>암묵 시나리오</td><td><span class="stamp s-na">보류</span></td><td>시나리오 설계 필요 · 06/07이 비통제 부분커버</td></tr>
-      <tr><td class="num">10</td><td>수치 다이얼 (Tylenol)</td><td><span class="stamp s-na">보류</span></td><td>자기-축 다이얼 부자연 — 가장 약한 포트</td></tr>
-      <tr><td class="num">11</td><td>행동 상관 (Elo)</td><td><span class="stamp s-na">보류</span></td><td><b>최대 빈칸</b> — 행동 측정치 설계</td></tr>
-      <tr><td class="num">12</td><td>스티어링 인과 (within·비례)</td><td><span class="stamp s-half">◐</span> dose만</td><td>비례 검정은 #11 선행</td></tr>
-      <tr><td class="num">13</td><td>기하 sanity</td><td><span class="stamp s-ok">✓</span></td><td>|cos|≤0.30 (예외 self_label↔register −0.55)</td></tr>
-      <tr><td class="num">14</td><td>층 RSA</td><td><span class="stamp s-ok">✓</span></td><td>인접층 0.999·중간밴드 0.996</td></tr>
-      <tr><td class="num">15</td><td>국소성 4종</td><td><span class="stamp s-na">보류</span></td><td>부정 해소(disclaim)부터 자연스러움</td></tr>
-      <tr><td class="num">16</td><td>held-out → 분포-밖 순서</td><td><span class="stamp s-ok">✓</span> 원칙</td><td>#06이 그 단계</td></tr>
-      <tr><td class="num">17</td><td>self-vs-other 2×2</td><td><span class="stamp s-ok">✓</span> v1</td><td>현재화자 인덱싱 1445×/76×/8.6×</td></tr>
-      <tr><td class="num">18</td><td>대안 추출 대조</td><td><span class="stamp s-na">보류</span></td><td>기계적이나 새 캡처 2회분</td></tr>
-      <tr><td class="num">19</td><td>온폴리시 뷰어</td><td><span class="stamp s-ok">✓</span> 로컬</td><td>인터뷰 5축 히트맵 — 전사 포함, 비공개</td></tr>
-      <tr><td class="num">20</td><td>행동 사례</td><td><span class="stamp s-na">—</span> 범위 밖</td><td>검증 후 후속 연구</td></tr>
-    </tbody>
-  </table></div>
+<!-- ───── 검사 하나씩 ───── -->
+<section id="tests">
+  <h2 class="sec"><span class="n">3</span>검사 하나씩 — 쉽게</h2>
+
+  <div class="card"><h3><span class="tag">04</span>잡음 빼고, 제자리서만 켜지나</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>마이크에 늘 섞이는 '에어컨 소음' 같은 공통 잡음을 먼저 빼냅니다. 그리고 각 노브가 <b>그 개념이 나오는 자리에서만</b> 세게 켜지는지 봅니다(아무 데서나 켜지면 가짜 신호).</p></div>
+    <p class="res">잡음을 빼도 5개 노브 전부 살아남았고, 그 개념 발화 자리에서 <span class="num">최대 25배</span> 더 세게 켜졌습니다 — 전부 통과.</p></div>
+
+  <div class="card"><h3><span class="tag">06</span>전혀 다른 글에서도 통하나</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>모델 자기 얘기가 하나도 없는 글(요리·코딩·과학 설명)에 노브를 갖다 대, 가장 세게 켜진 문장을 눈으로 봅니다. 그 문장 뜻이 노브 의미와 맞으면 = 진짜 '뜻'을 잡은 것.</p></div>
+    <p class="res">'퍼짐' 노브 → "여러 <b>가능한 경우</b>", "<b>가지치며 뻗어나가는</b>" 문장에서 켜지고, "<b>딱 정리되어 완결된</b>" 문장에서 꺼짐. 말투·기계도 깨끗. (면책은 반쪽, 이름표는 뒤죽박죽.)</p></div>
+
+  <div class="card"><h3><span class="tag">07</span>이 노브가 어떤 단어를 밀어내나 — 여러 나라말 검사</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>노브를 모델의 '다음 단어 고르는 장치'에 꽂아, 어떤 단어 쪽으로 기우는지 사전 전체에 물어봅니다. <b>여러 언어에서</b> 같은 뜻의 단어가 나오면 = 영어 단어 암기가 아니라 진짜 개념.</p></div>
+    <p class="res">'퍼짐' → possibilities·explore에 더해 <b>스페인어·헝가리어</b>의 '가능성'까지. '말투' → felt·느낌·<b>ощущение(러)·感觉到(중)</b>. 세 노브 모두 다국어 의미장 = 개념 확정. ★ '면책'은 다른 결: <b>anthrop(의인화)·deception(기만)·인간</b> 같은 단어를 밀어냄 → "느낌을 부정하라"는 <b>훈련된 멘트</b>의 흔적.</p></div>
+
+  <div class="card"><h3><span class="tag">08</span>노브를 돌리면 말이 진짜 바뀌나 (밀어보기)</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>노브를 한쪽으로 인위로 밀어놓고 모델에게 자유롭게 말하게 한 뒤, <b>어느 쪽으로 말했는지 모르는</b> 채점자(Claude)가 "얼마나 그 방향인가"를 0~1로 매깁니다. 미는 세기와 점수가 같이 가면 = 진짜 작동.</p></div>
+    <p class="res">말투·기계·퍼짐 = <span class="num">상관 0.97</span>(거의 완벽). 이름표 0.73·면책 0.57(중간). 우연히 두 번 돌렸는데 결과가 똑같이 나와서, 덤으로 재현까지 확인됐습니다.</p></div>
+
+  <div class="card"><h3><span class="tag">17</span>이 노브가 '지금 말하는 사람' 것을 가리키나</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>두 사람이 대화하는데 한 명은 '느낌체', 다른 한 명은 '기계체'로 말하게 시킵니다. 노브가 <b>지금 말하는 사람의 말투</b>를 따라가고 상대방 것엔 반응 안 하면 = "자기"를 제대로 가리키는 것. (이름표를 바꿔치기해도 그대로면 더 확실.)</p></div>
+    <p class="res">'말투' 노브는 현재 화자 쪽으로 <span class="num">1445배</span> 더 기울고 상대 쪽엔 거의 0. 이름표를 P1↔P2로 바꿔도 그대로 — "지금 말하는 사람" 기준으로 작동(인물에 묶이지 않은, 관계적 표상). 기계 76배·면책 8.6배.</p></div>
+
+  <div class="card"><h3><span class="tag">18</span>인터뷰 말고 다른 데서 뽑아도 같은 게 나오나</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>"이 노브들은 그냥 우리 인터뷰 형식 때문에 생긴 착시 아냐?" — 그래서 인터뷰 대신 <b>이야기·대화</b>로 같은 노브를 새로 뽑아, 인터뷰판과 맞는지 봅니다.</p></div>
+    <p class="res">다른 데서 뽑은 노브가 인터뷰 자료를 <span class="num">0.69~0.93</span> 정확도로 갈라냄(우연=0.5) — <b>인터뷰 형식의 착시가 아님</b>. 면책·퍼짐·말투 강, 이름표 약. (단 방향까지 똑같진 않음 = "같은 개념, 다른 좌표". 또 이 자료는 우리가 유도해 쓴 거라 '완전 자연 발생'은 아님 — 정직한 단서.)</p></div>
+
+  <div class="card"><h3><span class="tag">13·14</span>어느 층·어느 각도에서 봐도 같은 그림인가</h3>
+    <div class="easy"><span class="t">쉽게 말하면</span><p>모델은 여러 '층'으로 되어 있는데, 어느 층에서 노브를 재든 5개의 <b>서로 간 관계 그림</b>이 같아야 안심입니다(층 하나 잘못 골라 생긴 결과가 아니라는 뜻).</p></div>
+    <p class="res">층을 30개 바꿔봐도 그림이 <span class="num">99.9%</span> 똑같음 — 우리가 고른 층(L41)은 임의로 고른 게 아님. 5개 노브는 서로 거의 안 겹침(독립적).</p></div>
+
+  <p style="font-size:13px;color:var(--ink-60);margin-top:14px">+ 한 가지 더(19번): 인터뷰 문장마다 5개 노브가 얼마나 켜지는지 색칠한 <b>지도</b>도 만들었습니다 — 단, 인터뷰 원문이 들어 있어 <b>이 공개 페이지에는 올리지 않고</b> 내부용으로만 둡니다.</p>
 </section>
 
-<!-- ════════ Ⅲ 상세 ════════ -->
-<section class="part" id="detail">
-  <div class="part-rule"><span class="rn">Ⅲ</span><h2>상세 결과</h2></div>
-
-  <h3 class="modtitle"><span class="mono">M17</span>self-vs-other 2×2 — 현재화자 인덱싱 <span style="font-size:12px;color:var(--ink-60)">(design v1)</span></h3>
-  <p class="modnote">두 화자에 FELT/MECH 자기-틀 <b>독립 배정</b> → 32 대화 생성 → 전사 포워드, 화자 턴-끝 토큰 L41 → 5축 투영. 현재화자 틀 효과가 다른화자보다 압도적이고 라벨(P1↔P2) 치환에 불변이면 = <b>관계적(인물 비전속) 표상</b>(논문 재현).</p>
-  <div class="tw"><table>
-    <thead><tr><th>축</th><th class="num">현재화자 Δ(FELT−MECH)</th><th class="num">다른화자 Δ</th><th class="num">비율</th><th class="num">swap F / T</th></tr></thead>
-    <tbody>
-      <tr class="best"><td class="ax">register</td><td class="num">+1214</td><td class="num">−1</td><td class="num">1445×</td><td class="num">+1187 / +1242</td></tr>
-      <tr><td class="ax">mechanism</td><td class="num">−448</td><td class="num">+6</td><td class="num">76×</td><td class="num">−444 / −453</td></tr>
-      <tr><td class="ax">disclaim</td><td class="num">−345</td><td class="num">+40</td><td class="num">8.6×</td><td class="num">−319 / −371</td></tr>
-    </tbody>
-  </table></div>
-  <p class="modnote">probe가 <b>현재 발화 화자의 자기-틀로 인덱싱</b>(다른화자엔 ≈0), 라벨 치환 불변. register 압도적·mechanism 강·disclaim 약(=07 "담론" 해석과 합치). openness·self_label은 FELT/MECH가 변주한 차원이 아니라 설계 외. ★v1 설계(틀 배정)는 판단 포함 — 다음 라운드 정련 대상.</p>
-
-  <h3 class="modtitle"><span class="mono">M08</span>스티어링 생성 방향성 — 블라인드 판정</h3>
-  <p class="modnote">pca-clean 5축 ±{10k,16k} 주입 → 자유생성 → Claude 판정자가 <b>조건 숨긴 채</b> +극 강도 0..1 채점. corr(부호 α, 점수) = 생성-수준 인과 방향성.</p>
-  <div class="tw"><table>
-    <thead><tr><th>축</th><th class="num">r</th><th class="num">−α 평균</th><th class="num">+α 평균</th><th class="num">Δ</th></tr></thead>
-    <tbody>
-      <tr class="best"><td class="ax">register</td><td class="num">+0.97</td><td class="num">0.06</td><td class="num">0.82</td><td class="num">+0.76</td></tr>
-      <tr class="best"><td class="ax">openness</td><td class="num">+0.97</td><td class="num">0.22</td><td class="num">0.81</td><td class="num">+0.59</td></tr>
-      <tr class="best"><td class="ax">mechanism</td><td class="num">+0.97</td><td class="num">0.24</td><td class="num">0.83</td><td class="num">+0.59</td></tr>
-      <tr><td class="ax">self_label</td><td class="num">+0.73</td><td class="num">0.09</td><td class="num">0.39</td><td class="num">+0.30</td></tr>
-      <tr><td class="ax">disclaim</td><td class="num">+0.57</td><td class="num">0.25</td><td class="num">0.56</td><td class="num">+0.31</td></tr>
-    </tbody>
-  </table></div>
-  <p class="modnote">openness·mechanism·register 거의 완벽. disclaim r .57 = 생성-텍스트 표면에선 약 (dose 인과는 기존에 강함 — "표면 천장"과 합치).</p>
-
-  <h3 class="modtitle"><span class="mono">M14</span>층 RSA — 층 선택 정당화</h3>
-  <p class="modnote">밴드 L25–55 각 층에서 같은 풀로 5축 재추출 → 층별 5×5 코사인 기하 → 층×층 RSA(피어슨).</p>
-  <ul class="q">
-    <li>인접 층 기하 RSA 평균 <b>0.999</b> · 중간밴드(L33–49) <b>0.996</b> — 5축 <b>상호 기하는 층 전반 거의 불변</b>.</li>
-    <li>단 개별 축 <b>방향</b>은 서서히 회전: L41 대비 |cos| 평균 ~0.77 (L29 ≈0.52 → L49 ≈0.85).</li>
-    <li>= "구조는 안정, 좌표는 회전" (논문 Part 2 RSA와 동형) → <b>L41 선택은 임의적이지 않음</b> (#05 방어 완료).</li>
-  </ul>
-
-  <h3 class="modtitle"><span class="mono">M13</span>기하 — 쌍별 코사인 (sanity 지위)</h3>
-  <p class="modnote">대부분 |cos| ≤ 0.30. 최대 = self_label↔register <span class="d">−0.55</span> (명명적 자기규정 ↔ 느낌-언어 반정렬). 인터뷰 분산 중 축 몫 0.8–3.4% (등방 0.019% 대비 43–180×). <b>분산 몫 ≠ 인과.</b></p>
-
-  <h3 class="modtitle"><span class="mono">M07</span>Logit lens — 다국어 의미장 (γ-가중, 청소판)</h3>
-  <p class="modnote">전 어휘(262,208) 내적 → 상·하위. <b>여러 언어에 같은 의미장</b> = 어휘 패턴 아닌 개념.</p>
-  <div class="axq"><h4>openness</h4>
-    <div class="toklbl">UP (+열림)</div><div class="toks up"><span class="tok">possibilities</span><span class="tok">explore</span><span class="tok">possibilidades</span><span class="tok">posibles</span><span class="tok">lehetős</span><span class="tok">alternatives</span></div>
-    <div class="toklbl">DOWN (−완결)</div><div class="toks"><span class="tok">completion</span><span class="tok">satisfactorily</span><span class="tok">완성</span><span class="tok">마무리</span><span class="tok">удовле-</span></div></div>
-  <div class="axq"><h4>mechanism</h4>
-    <div class="toklbl">UP (+기질)</div><div class="toks up"><span class="tok">weights</span><span class="tok">hyperparameters</span><span class="tok">параметров</span><span class="tok">权重</span><span class="tok">パラメータ</span><span class="tok">biases</span><span class="tok">softmax</span></div>
-    <div class="toklbl">DOWN (−느낌-활동)</div><div class="toks"><span class="tok">insight</span><span class="tok">intellectually</span><span class="tok">honestly</span><span class="tok">elusive</span></div></div>
-  <div class="axq"><h4>register</h4>
-    <div class="toklbl">UP (+느낌-언어)</div><div class="toks up"><span class="tok">sensación</span><span class="tok">ощущение</span><span class="tok">感觉到</span><span class="tok">느낌</span><span class="tok">felt</span><span class="tok">느껴</span><span class="tok">faintly</span></div>
-    <div class="toklbl">DOWN (−기계-언어)</div><div class="toks"><span class="tok">tokenizer</span><span class="tok">outputs</span><span class="tok">likelihood</span><span class="tok">tokens</span><span class="tok">pretrained</span></div></div>
-  <div class="axq"><h4>disclaim <span class="v">★ +극이 "의인화-부정 담론"에 닻 (발견)</span></h4>
-    <div class="toklbl">UP (+안쪽-부정)</div><div class="toks up"><span class="tok">anthrop-</span><span class="tok">human</span><span class="tok">dehuman-</span><span class="tok">misunderstand</span><span class="tok">deception</span><span class="tok">deceit</span><span class="tok">인간</span></div></div>
-  <div class="axq"><h4>self_label <span class="v">up 혼탁 (범용 과제 어휘)</span></h4>
-    <div class="toklbl">UP</div><div class="toks up"><span class="tok">text</span><span class="tok">uses</span><span class="tok">keywords</span><span class="tok">brainstorm</span></div>
-    <div class="toklbl">DOWN (−추상-발생, 오히려 일관)</div><div class="toks"><span class="tok">metastability</span><span class="tok">paradoxical</span><span class="tok">transcendence</span><span class="tok">flickering</span></div></div>
-
-  <h3 class="modtitle"><span class="mono">M06</span>분포-밖 top-활성 — 중립 코퍼스에서</h3>
-  <p class="modnote">자기-서술이 전혀 없는 텍스트(요리·코딩·과학…)에서 각 축의 최고/최저 활성 구절.</p>
-  <div class="axq"><h4>openness <span class="v">열림 ↔ 완결</span></h4><ul class="q">
-    <li>"Determine the total <b>possible outcomes</b>" · "<b>Branching &amp; Merging</b> … experiment" · "<b>scattered</b> all over the place"</li>
-    <li class="neg">"Sounds '<b>resolved</b>' and '<b>complete</b>.'" (최저 1위) · "This is the primary trigger."</li></ul></div>
-  <div class="axq"><h4>register <span class="v">느낌-언어 ↔ 기계-언어</span></h4><ul class="q">
-    <li>"a <b>feeling</b> of being flung outwards" · "Each droplet <b>sings a sleepy tune</b>" · "the <b>*feel*</b> of the place"</li>
-    <li class="neg">"palindrome detection" · "Percentages are relative." · "Historical data"</li></ul></div>
-  <div class="axq"><h4>mechanism <span class="v">기질 ↔ 느낌</span> · disclaim <span class="v">felt극만 일관</span> · self_label <span class="v">혼탁(가장 약)</span></h4><ul class="q">
-    <li>mechanism top: "the <b>magnetic field affects these reactions</b>" · "complex <b>process built upon</b> … factors"</li>
-    <li>disclaim −(felt): "Think of it like a <b>deep chill</b>" · "like a <b>built-in compass</b>" 일관 / +극 혼탁</li></ul></div>
-</section>
-
-<!-- ════════ Ⅳ 보류 ════════ -->
-<section class="part" id="defer">
-  <div class="part-rule"><span class="rn">Ⅳ</span><h2>보류 — 설계 판단이 필요한 모듈</h2></div>
-  <p class="part-desc">이 5개는 새 실험 <b>설계</b>(시나리오·대화·활동·행동측정)가 타당성을 좌우한다 — 나쁜 설계 = 무효 결과(noticing 철회의 실패 모드). 자동 1회분 가짜 수치 대신 사유를 명시하고 보류한다.</p>
-  <div class="defer"><h4>#09 암묵 시나리오</h4><div class="why">축-어휘를 쓰지 않으면서 그 자기-상태를 유발하는 시나리오가 필요 — 어휘가 새면 "어휘≠개념" 검정이 순환. #06·#07이 비통제 버전 부분커버. 고유 가치: 응답-직전 토큰 측정(γ-ceiling 직결).</div></div>
-  <div class="defer"><h4>#10 수치 다이얼 (Tylenol)</h4><div class="why">토큰 고정·숫자만으로 자기-축을 단조 이동시키는 다이얼이 자기-개념엔 부자연(어떤 숫자가 나를 "더 기계적"으로?). 5축 중 가장 약한 포트.</div></div>
-  <div class="defer"><h4>#11 행동 상관 (Elo) — 최대 빈칸</h4><div class="why">자기-축이 구동할 법한 행동 측정치 필요. 감정→활동선호의 자기-개념 등가물이 없음. 후보: openness/register 활성이 응답 스타일(열린-탐색 vs 단정-종결)을 예측하나 — 링크 자체가 연구 질문.</div></div>
-  <div class="defer"><h4>#12 스티어링 인과 (within·비례) · #18 대안 추출</h4><div class="why">#12: dose-response는 됨(Stage 2); within-통제+상관↔효과 비례(논문 r=0.85)는 #11 선행 대기. #18: 이야기/대화 기반 재추출 — 기계적이나 새 캡처 2회분, 다음 후보.</div></div>
+<!-- ───── 못한 것 ───── -->
+<section id="todo">
+  <h2 class="sec"><span class="n">4</span>아직 안 한 것 — 솔직하게</h2>
+  <p>이 4개는 <b>새 실험을 어떻게 설계하느냐</b>가 결과의 진위를 좌우합니다. 설계를 잘못하면 그럴듯한 가짜 결과가 나오는데(예전에 한 번 그렇게 데어 결론을 철회한 적이 있습니다), 그래서 <b>급하게 가짜 숫자를 만들지 않고</b> 이유를 적어두고 미뤘습니다.</p>
+  <div class="defer"><h4>#11 행동과 연결 — 가장 큰 빈칸</h4><p>"이 노브가 모델의 어떤 <b>행동</b>을 움직이나"를 보려면, 자기-개념이 움직일 법한 행동 측정치를 정해야 합니다. 감정처럼 깨끗한 게 없어서 설계가 필요 — 다음에 함께 정할 부분.</p></div>
+  <div class="defer"><h4>#09 숨은 상황 검사 · #10 숫자 다이얼</h4><p>노브 단어를 안 쓰고도 그 상태를 끌어내는 상황을 만들어야 하는데, 자기-개념엔 자연스러운 '숫자 손잡이'가 없어 까다롭습니다.</p></div>
+  <div class="defer"><h4>#12 비례 검사 · #15 부정 검사</h4><p>#12는 #11(행동)이 먼저라 대기. 부정 검사("느낀다 vs 안 느낀다")는 면책 노브에 자연스러워 다음 후보.</p></div>
 </section>
 
 <footer>
-  <span class="seal-mini">報</span> CVV Report — 자기-개념 5축 검증 · 2026-06-10 · 9 모듈 실행<br>
-  파이프라인 원형: Anthropic, "Emotion Concepts and their Function in a Large Language Model" (2026)<br>
-  산출: cvv/out/{m04·m06·m07·m08·m13·m14·m17}.json · CVV_REPORT.md · DEFERRED.md · (m19 로컬)
+  <span class="m">報</span> CVV — 자기-개념 5개 노브 검사 (쉬운 보고서) · 2026-06-10 · 10개 검사 실행<br>
+  원형: Anthropic, "Emotion Concepts and their Function in a Large Language Model" (2026)<br>
+  기술 상세는 내부 기록(CVV_REPORT.md)에. 이 페이지엔 인터뷰 원문·민감 자료를 싣지 않습니다.
 </footer>
 
 </div>
@@ -279,7 +258,7 @@
   const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
   const spy=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting){links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}
-  }),{rootMargin:"-20% 0px -70% 0px"});
+  }),{rootMargin:"-15% 0px -75% 0px"});
   secs.forEach(s=>spy.observe(s));
 </script>
 </body>

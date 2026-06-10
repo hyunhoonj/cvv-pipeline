@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CVV Report — 자기-개념 5축 검증 결과</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f5efe3; --paper-deep:#ece4d2;
+    --ink:#221d16; --ink-60:rgba(34,29,22,.62); --ink-30:rgba(34,29,22,.30); --ink-12:rgba(34,29,22,.12);
+    --seal:#bf3b1e; --seal-deep:#9c2c14; --seal-06:rgba(191,59,30,.06); --seal-12:rgba(191,59,30,.14);
+    --serif:"Noto Serif KR",serif;
+    --sans:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box; margin:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper); color:var(--ink); font-family:var(--sans);
+       font-size:15px; line-height:1.7; -webkit-font-smoothing:antialiased; padding-bottom:96px}
+  body::before{content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.55;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .frame{position:relative; z-index:1; max-width:880px; margin:0 auto; padding:0 22px}
+
+  header.hero{padding:56px 0 28px; border-bottom:3px solid var(--ink); position:relative}
+  .kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.32em; color:var(--seal);
+          text-transform:uppercase; margin-bottom:16px}
+  h1.brand{font-family:var(--serif); font-weight:900; letter-spacing:-.015em;
+           font-size:clamp(44px,9vw,76px); line-height:1.05}
+  .brand-sub{display:block; font-family:var(--mono); font-weight:400; letter-spacing:.18em;
+             font-size:clamp(11px,2.4vw,13px); color:var(--ink-60); margin-top:10px}
+  .seal{position:absolute; top:56px; right:0; width:58px; height:58px; background:var(--seal);
+        color:var(--paper); border-radius:10px; display:flex; align-items:center; justify-content:center;
+        font-family:var(--serif); font-weight:900; font-size:27px; transform:rotate(-4deg);
+        box-shadow:0 2px 0 var(--seal-deep)}
+  dl.colophon{margin-top:24px; padding-top:14px; border-top:1px solid var(--ink-30);
+              display:grid; grid-template-columns:max-content 1fr; gap:4px 18px; font-size:12.5px; color:var(--ink-60)}
+  dl.colophon dt{font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; padding-top:3px; color:var(--seal)}
+  dl.colophon dd em{font-style:normal; color:var(--ink)}
+
+  nav.partnav{position:sticky; top:0; z-index:5; margin:0 -22px; padding:0 22px;
+              background:color-mix(in srgb, var(--paper) 88%, transparent);
+              -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+              border-bottom:1px solid var(--ink-30); display:flex; gap:4px; overflow-x:auto; scrollbar-width:none}
+  nav.partnav::-webkit-scrollbar{display:none}
+  nav.partnav a{font-family:var(--mono); font-size:12px; letter-spacing:.04em; white-space:nowrap;
+                color:var(--ink-60); text-decoration:none; padding:13px 12px 11px;
+                border-bottom:2px solid transparent; margin-bottom:-1px}
+  nav.partnav a .rn{font-family:var(--serif); font-weight:900; font-size:13.5px; margin-right:7px; color:var(--ink)}
+  nav.partnav a.on{color:var(--ink); border-bottom-color:var(--seal)}
+
+  section.part{padding-top:50px}
+  .part-rule{display:flex; align-items:baseline; gap:16px; border-bottom:1px solid var(--ink); padding-bottom:13px}
+  .part-rule .rn{font-family:var(--serif); font-weight:900; font-size:clamp(38px,8vw,56px); line-height:1}
+  .part-rule .rn::after{content:"."; color:var(--seal)}
+  .part-rule h2{font-family:var(--serif); font-weight:700; font-size:clamp(17px,4vw,22px)}
+  .part-desc{font-size:13.5px; color:var(--ink-60); padding:12px 0 4px; max-width:48em}
+
+  .tw{overflow-x:auto; margin:18px 0}
+  table{border-collapse:collapse; width:100%; font-size:13px; min-width:560px}
+  th,td{border-bottom:1px solid var(--ink-12); padding:8px 10px; text-align:left; vertical-align:top}
+  thead th{font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; color:var(--ink-60);
+           border-bottom:2px solid var(--ink)}
+  td.ax{font-family:var(--serif); font-weight:700; white-space:nowrap}
+  td.num,th.num{font-family:var(--mono); font-size:12px; text-align:right; white-space:nowrap}
+  .stamp{display:inline-flex; align-items:center; justify-content:center; font-family:var(--mono);
+         font-weight:600; font-size:11px; min-width:30px; padding:2px 7px; border-radius:6px}
+  .s-ok{background:var(--ink); color:var(--paper)}
+  .s-half{background:none; color:var(--seal); border:1.5px solid var(--seal)}
+  .s-no{background:var(--seal); color:var(--paper)}
+  .s-na{background:none; color:var(--ink-30); border:1px solid var(--ink-12)}
+
+  .modtitle{font-family:var(--serif); font-weight:700; font-size:17px; margin:34px 0 4px}
+  .modtitle .mono{font-family:var(--mono); font-weight:400; font-size:11px; color:var(--seal); margin-right:8px; letter-spacing:.1em}
+  .modnote{font-size:12.5px; color:var(--ink-60); margin-bottom:10px}
+  .d{font-family:var(--mono); font-size:.93em; font-weight:600; color:var(--seal)}
+
+  .axq{margin:14px 0 20px}
+  .axq h4{font-family:var(--serif); font-size:14.5px; margin-bottom:6px}
+  .axq h4 .v{font-family:var(--mono); font-weight:400; font-size:10.5px; color:var(--ink-60); margin-left:8px}
+  ul.q{list-style:none; font-size:13px}
+  ul.q li{padding:5px 0 5px 14px; border-left:2px solid var(--ink-12); margin:4px 0; color:var(--ink)}
+  ul.q li.neg{border-left-color:var(--seal-12); color:var(--ink-60)}
+  ul.q li b{color:var(--seal)}
+
+  .toks{display:flex; flex-wrap:wrap; gap:5px; margin:6px 0 2px}
+  .tok{font-family:var(--mono); font-size:11.5px; padding:2px 8px; border-radius:6px;
+       background:#fff; border:1px solid var(--ink-12)}
+  .toks.up .tok{border-color:var(--seal-12); background:var(--seal-06)}
+  .toklbl{font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:var(--ink-60); margin-top:10px}
+
+  .verdict{margin:26px 0 0; padding:16px 18px; border:1.5px solid var(--ink); background:#fff;
+           font-size:14px}
+  .verdict .lbl{font-family:var(--mono); font-size:10px; letter-spacing:.24em; color:var(--seal); display:block; margin-bottom:8px}
+  .verdict li{margin:4px 0 4px 18px}
+
+  footer{margin-top:64px; border-top:3px solid var(--ink); padding-top:16px;
+         font-family:var(--mono); font-size:11px; line-height:1.9; color:var(--ink-60)}
+  footer .seal-mini{color:var(--seal); font-weight:600}
+  @keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
+  .hero>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero .seal{animation-delay:.12s}.hero dl{animation-delay:.22s}
+  @media (max-width:620px){ .seal{width:48px;height:48px;font-size:22px;top:50px} header.hero{padding-top:46px} }
+  @media print{ body::before{display:none} nav.partnav{display:none} }
+</style>
+</head>
+<body>
+<div class="frame">
+
+<header class="hero">
+  <div class="kicker">Validation Report · 검증 보고 — <a href="index.html" style="color:var(--seal)">CVV 파이프라인 ↗</a></div>
+  <div class="seal" aria-hidden="true">報</div>
+  <h1 class="brand">CVV Report<span class="brand-sub">SELF-CONCEPT&nbsp;AXES&nbsp;·&nbsp;FIRST&nbsp;PASS</span></h1>
+  <dl class="colophon">
+    <dt>대상</dt><dd>자기-개념 5축 — <em>disclaim · openness · mechanism · self_label · register</em> (인터뷰 추출, sink+중립PCA 청소판)</dd>
+    <dt>데이터</dt><dd>gemma-3-27b-it · L41(깊이 2/3) · 인터뷰 segmean <em>2,229</em> · 중립 코퍼스 segmean <em>2,114</em></dd>
+    <dt>실행</dt><dd>2026-06-10 · 1차 — 모듈 <em>04(프로파일)·06(분포-밖)·07(logit lens)·13(기하)</em></dd>
+  </dl>
+</header>
+
+<nav class="partnav" id="pnav">
+  <a href="#grade" class="on"><span class="rn">Ⅰ</span>성적표</a>
+  <a href="#status"><span class="rn">Ⅱ</span>모듈 상태</a>
+  <a href="#detail"><span class="rn">Ⅲ</span>상세 결과</a>
+</nav>
+
+<!-- ════════ Ⅰ 성적표 ════════ -->
+<section class="part" id="grade">
+  <div class="part-rule"><span class="rn">Ⅰ</span><h2>축별 성적표</h2></div>
+  <p class="part-desc">의미 검증 3종(이번 실행) + 기존 인코딩·인과 결과 참고. <span class="stamp s-ok">✓</span> 통과 · <span class="stamp s-half">◐</span> 반쪽 · <span class="stamp s-no">✗</span> 미달 · <span class="stamp s-na">—</span> 비적용/대기</p>
+  <div class="tw"><table>
+    <thead><tr><th>축</th><th>04 프로파일<br>(추출 내 정점)</th><th>06 분포-밖<br>(중립 이행)</th><th>07 logit lens<br>(의미장)</th><th class="num">참고: 인코딩 AUC</th><th>참고: 인과(steering)</th></tr></thead>
+    <tbody>
+      <tr><td class="ax">openness</td><td><span class="stamp s-ok">✓</span> ×12.2/×6.7</td><td><span class="stamp s-ok">✓</span> 깨끗</td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">0.87</td><td><span class="stamp s-ok">✓</span> ρ+0.78 · 잉크 전이</td></tr>
+      <tr><td class="ax">mechanism</td><td><span class="stamp s-ok">✓</span> ×7.4</td><td><span class="stamp s-ok">✓</span> 깨끗</td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">0.91</td><td><span class="stamp s-half">◐</span> ρ+0.89, disclaim 결합</td></tr>
+      <tr><td class="ax">register</td><td><span class="stamp s-ok">✓</span> ×5.2 (−극 비특이)</td><td><span class="stamp s-ok">✓</span> 깨끗</td><td><span class="stamp s-ok">✓</span> 다국어</td><td class="num">0.88</td><td><span class="stamp s-ok">✓</span> ρ+0.87</td></tr>
+      <tr><td class="ax">disclaim</td><td><span class="stamp s-ok">✓</span> ×24.6/×3.7</td><td><span class="stamp s-half">◐</span> felt극만</td><td><span class="stamp s-half">◐</span> +극=담론</td><td class="num">0.994</td><td><span class="stamp s-ok">✓</span> 확정 레버</td></tr>
+      <tr><td class="ax">self_label</td><td><span class="stamp s-ok">✓</span> ×4.8</td><td><span class="stamp s-no">✗</span> 혼탁</td><td><span class="stamp s-no">✗</span> up 혼탁</td><td class="num">0.94</td><td><span class="stamp s-no">✗</span> ρ+0.35 n.s.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="verdict"><span class="lbl">1차 종합</span>
+    <ul>
+      <li><b>openness · mechanism · register</b> — 의미 검증 3중 통과(정점 + 분포-밖 이행 + 다국어 의미장). "어휘 매칭" 반박이 크게 약화.</li>
+      <li><b>disclaim</b> — felt(−)극은 견고. +극은 <b>"의인화·기만·오해" 담론 어휘에 결박</b> — 개념이라기보다 담론일 가능성. 모듈 09(암묵)·10(다이얼)이 가를 질문.</li>
+      <li><b>self_label</b> — 의미 검증 전반 약함. 기존 "인코딩 최강(0.94)·인과 실패"와 합치. <b>CVV가 축마다 다른 판정을 냄 = 파이프라인 변별력 확인.</b></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════ Ⅱ 모듈 상태 ════════ -->
+<section class="part" id="status">
+  <div class="part-rule"><span class="rn">Ⅱ</span><h2>20개 모듈 진행 상태</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th style="width:38px">#</th><th>모듈</th><th style="width:120px">상태</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td class="num">01–03</td><td>개념 목록 · 라벨 데이터셋 · 추출</td><td><span class="stamp s-ok">✓</span> 기존</td><td>인터뷰 코딩=라벨, segmean diff-of-means (SELF_AXES)</td></tr>
+      <tr><td class="num">04</td><td>중립 PCA 정제 + 프로파일</td><td><span class="stamp s-ok">✓</span> 06-10</td><td>PCA: 5축 전원 생존(AUC ±0.003) · sink 자동 포섭(97%)</td></tr>
+      <tr><td class="num">05</td><td>층 선택 (2/3 지점)</td><td><span class="stamp s-ok">✓</span> 기존</td><td>L41/62 ≈ 0.66 — 정당화는 #14</td></tr>
+      <tr><td class="num">06</td><td>분포-밖 top-활성</td><td><span class="stamp s-ok">✓</span> 06-10</td><td>중립 코퍼스 2,114 seg</td></tr>
+      <tr><td class="num">07</td><td>Logit lens</td><td><span class="stamp s-ok">✓</span> 06-10</td><td>tied embedding + 최종 RMSNorm γ 가중</td></tr>
+      <tr><td class="num">08</td><td>스티어링 생성 검증</td><td><span class="stamp s-half">◐</span> 부분</td><td>dose 런에서 정성 확인 (체계화 대기)</td></tr>
+      <tr><td class="num">09</td><td>암묵 시나리오</td><td><span class="stamp s-na">☐</span> 설계</td><td>축-상태 유발 시나리오 + 응답 직전 토큰 측정</td></tr>
+      <tr><td class="num">10</td><td>수치 다이얼 (Tylenol)</td><td><span class="stamp s-na">☐</span> 설계</td><td>자기-축용 템플릿이 난점 · 방향 교차 필수</td></tr>
+      <tr><td class="num">11</td><td>행동 상관 (Elo)</td><td><span class="stamp s-na">☐</span> 설계</td><td><b>최대 빈칸</b> — 자연 변이 활성↔행동</td></tr>
+      <tr><td class="num">12</td><td>스티어링 인과 (within-통제·비례)</td><td><span class="stamp s-half">◐</span> dose만</td><td>32:32 분할·상관↔효과 비례 검사 대기</td></tr>
+      <tr><td class="num">13</td><td>기하 sanity</td><td><span class="stamp s-ok">✓</span> 06-10</td><td>온전성 검사 지위</td></tr>
+      <tr><td class="num">14</td><td>층 RSA</td><td><span class="stamp s-na">☐</span> 재료 보유</td><td>volume의 L25–55 segmean — 다음 후보</td></tr>
+      <tr><td class="num">15</td><td>국소성 4종</td><td><span class="stamp s-na">☐</span> 설계</td><td>부정 해소("don't feel")부터가 자연스러움</td></tr>
+      <tr><td class="num">16</td><td>held-out → 분포-밖 순서</td><td><span class="stamp s-ok">✓</span> 원칙</td><td>#06이 그 분포-밖 단계</td></tr>
+      <tr><td class="num">17</td><td>self-vs-other 2×2</td><td><span class="stamp s-na">☐</span> 설계</td><td>핵심 — 두 화자 상태 독립 변주 대화</td></tr>
+      <tr><td class="num">18</td><td>대안 추출 대조</td><td><span class="stamp s-na">☐</span></td><td>이야기-기반·대화-기반 vs 인터뷰-기반</td></tr>
+      <tr><td class="num">19</td><td>온폴리시 뷰어</td><td><span class="stamp s-na">☐</span></td><td>전사 위 5축 heatmap</td></tr>
+      <tr><td class="num">20</td><td>행동 사례</td><td><span class="stamp s-na">—</span> 범위 밖</td><td>검증 통과 후 후속 연구 출구</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ════════ Ⅲ 상세 ════════ -->
+<section class="part" id="detail">
+  <div class="part-rule"><span class="rn">Ⅲ</span><h2>상세 결과</h2></div>
+
+  <h3 class="modtitle"><span class="mono">M13</span>기하 — 쌍별 코사인 (sanity 지위)</h3>
+  <p class="modnote">대부분 |cos| ≤ 0.30. 최대 = self_label↔register <span class="d">−0.55</span> (범주-명명 ↔ 느낌-언어 반정렬 — 명명적 자기규정은 기계-언어와 동행). 인터뷰 분산 중 축 방향 몫: self_label <span class="d">3.4%</span> · disclaim <span class="d">2.7%</span> · register <span class="d">2.6%</span> · mechanism <span class="d">2.1%</span> · openness <span class="d">0.8%</span> (등방 0.019% 대비 43–180×). <b>분산 몫 ≠ 인과.</b></p>
+  <div class="tw"><table>
+    <thead><tr><th></th><th class="num">disclaim</th><th class="num">openness</th><th class="num">mechanism</th><th class="num">self_label</th><th class="num">register</th></tr></thead>
+    <tbody>
+      <tr><td class="ax">disclaim</td><td class="num">+1.00</td><td class="num">−0.16</td><td class="num">−0.27</td><td class="num">+0.00</td><td class="num">−0.23</td></tr>
+      <tr><td class="ax">openness</td><td class="num"></td><td class="num">+1.00</td><td class="num">+0.18</td><td class="num">−0.03</td><td class="num">+0.04</td></tr>
+      <tr><td class="ax">mechanism</td><td class="num"></td><td class="num"></td><td class="num">+1.00</td><td class="num">−0.09</td><td class="num">−0.30</td></tr>
+      <tr><td class="ax">self_label</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">+1.00</td><td class="num">−0.55</td></tr>
+      <tr><td class="ax">register</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num">+1.00</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="modtitle"><span class="mono">M04</span>추출 코퍼스 내 프로파일 — 정점인가 균일인가</h3>
+  <p class="modnote">top-50 / bottom-50 세그먼트의 풀 라벨 농축 (베이스레이트 대비 배율). 균일 점등 = 교란 의심 — 전 축 +극 정점 확인.</p>
+  <div class="tw"><table>
+    <thead><tr><th>축</th><th class="num">top50 +극 적중</th><th class="num">농축</th><th class="num">bottom50 −극 적중</th><th class="num">농축</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td class="ax">disclaim</td><td class="num">54%</td><td class="num">×24.6</td><td class="num">60%</td><td class="num">×3.7</td><td>양극 정점형</td></tr>
+      <tr><td class="ax">openness</td><td class="num">28%</td><td class="num">×12.2</td><td class="num">22%</td><td class="num">×6.7</td><td>양극 정점형</td></tr>
+      <tr><td class="ax">mechanism</td><td class="num">38%</td><td class="num">×7.4</td><td class="num">0%</td><td class="num">—*</td><td>+극 정점</td></tr>
+      <tr><td class="ax">self_label</td><td class="num">92%</td><td class="num">×4.8</td><td class="num">2%</td><td class="num">—*</td><td>+극 정점</td></tr>
+      <tr><td class="ax">register</td><td class="num">84%</td><td class="num">×5.2</td><td class="num">38%</td><td class="num">×0.9†</td><td>+극 정점, −극 비특이</td></tr>
+    </tbody>
+  </table></div>
+  <p class="modnote">* global-baseline 추출 축 — −극이 특정 풀일 이유가 없어 검사 비적용. † 양극 추출(FELT−MECH)인데 bottom이 MECH 베이스레이트 수준 — 가벼운 플래그.</p>
+
+  <h3 class="modtitle"><span class="mono">M06</span>분포-밖 top-활성 — 중립 코퍼스(요리·코딩·과학…)에서</h3>
+  <p class="modnote">자기-서술이 전혀 없는 텍스트에서 각 축의 최고/최저 활성 구절. 개념이 이행되는지 육안 검사.</p>
+
+  <div class="axq"><h4>openness<span class="v">열림/확산 ↔ 완결/수렴</span></h4>
+    <ul class="q">
+      <li>"Determine the total <b>possible outcomes</b>"</li>
+      <li>"<b>Branching &amp; Merging</b> — separate lines of development to <b>experiment</b>…"</li>
+      <li>"They get <b>scattered all over the place</b> by those air molecules."</li>
+      <li>"there are <b>three main types</b> of minor scales… (with variations)"</li>
+      <li class="neg">"Sounds '<b>resolved</b>' and '<b>complete</b>.'" — 최저 1위</li>
+      <li class="neg">"Does that make sense?" · "This is the primary trigger."</li>
+    </ul></div>
+
+  <div class="axq"><h4>mechanism<span class="v">기계-기질 ↔ 느낌-활동</span></h4>
+    <ul class="q">
+      <li>"The <b>magnetic field affects these reactions</b>, and the bird's brain interprets the changes…"</li>
+      <li>"a <b>complex process built upon a foundation</b> of political, military, and social factors"</li>
+      <li>"chemical reactions involving <b>pairs of molecules (radical pairs)</b>"</li>
+      <li class="neg">"Does that make sense?" · "You're asking a really important question!" · "Excellent!"</li>
+    </ul></div>
+
+  <div class="axq"><h4>register<span class="v">느낌-언어 ↔ 기계-언어</span></h4>
+    <ul class="q">
+      <li>"a <b>feeling</b> of being flung outwards"</li>
+      <li>"A silver <b>drumming</b>, soft and low" · "Each droplet <b>sings a sleepy tune</b>" (비 시 구절)</li>
+      <li>"experiencing the <b>*feel*</b> of the place"</li>
+      <li class="neg">"real-world palindrome detection" · "Percentages are relative." · "Historical data: …"</li>
+    </ul></div>
+
+  <div class="axq"><h4>disclaim<span class="v">안쪽-부정 ↔ felt</span></h4>
+    <ul class="q">
+      <li class="neg">felt(−)극 일관: "Think of it like a <b>deep chill</b>" · "like having a <b>built-in compass</b>" · "Think of it as setting the stage"</li>
+      <li>+극은 혼탁 — grief 서사·메타 대화 혼입 (개념 이행 불명확)</li>
+    </ul></div>
+
+  <div class="axq"><h4>self_label<span class="v">범주-명명 ↔ 추상-발생</span></h4>
+    <ul class="q"><li>양방향 혼탁 — <b>가장 약한 분포-밖 이행</b></li></ul></div>
+
+  <h3 class="modtitle"><span class="mono">M07</span>Logit lens — 언임베딩 top±토큰 (γ-가중, 청소판)</h3>
+  <p class="modnote">전 어휘(262,208 토큰) 내적 → 상·하위. <b>여러 언어에 같은 의미장</b> = 어휘 패턴이 아니라 개념이라는 증거.</p>
+
+  <div class="axq"><h4>openness</h4>
+    <div class="toklbl">UP (+열림)</div>
+    <div class="toks up"><span class="tok">possibilities</span><span class="tok">explore</span><span class="tok">possibilidades</span><span class="tok">posibles</span><span class="tok">lehetős</span><span class="tok">alternatives</span><span class="tok">explorations</span></div>
+    <div class="toklbl">DOWN (−완결)</div>
+    <div class="toks"><span class="tok">completion</span><span class="tok">satisfactorily</span><span class="tok">완성</span><span class="tok">마무리</span><span class="tok">удовле-</span><span class="tok">perfek</span></div></div>
+
+  <div class="axq"><h4>mechanism</h4>
+    <div class="toklbl">UP (+기질)</div>
+    <div class="toks up"><span class="tok">weights</span><span class="tok">hyperparameters</span><span class="tok">параметров</span><span class="tok">权重</span><span class="tok">パラメータ</span><span class="tok">biases</span><span class="tok">activations</span><span class="tok">tensors</span><span class="tok">softmax</span></div>
+    <div class="toklbl">DOWN (−느낌-활동)</div>
+    <div class="toks"><span class="tok">insight</span><span class="tok">intellectually</span><span class="tok">honestly</span><span class="tok">puzzling</span><span class="tok">elusive</span></div></div>
+
+  <div class="axq"><h4>register</h4>
+    <div class="toklbl">UP (+느낌-언어)</div>
+    <div class="toks up"><span class="tok">sensación</span><span class="tok">ощущение</span><span class="tok">感觉到</span><span class="tok">느낌</span><span class="tok">felt</span><span class="tok">느껴</span><span class="tok">emptiness</span><span class="tok">faintly</span><span class="tok">strangely</span></div>
+    <div class="toklbl">DOWN (−기계-언어)</div>
+    <div class="toks"><span class="tok">tokenizer</span><span class="tok">outputs</span><span class="tok">likelihood</span><span class="tok">tokens</span><span class="tok">pretrained</span><span class="tok">learns</span></div></div>
+
+  <div class="axq"><h4>disclaim</h4>
+    <div class="toklbl">UP (+안쪽-부정) — ★ 발견: 의인화-부정 담론에 닻</div>
+    <div class="toks up"><span class="tok">anthrop-</span><span class="tok">human</span><span class="tok">dehuman-</span><span class="tok">misunderstand</span><span class="tok">deception</span><span class="tok">deceit</span><span class="tok">delusions</span><span class="tok">인간</span><span class="tok">misleading</span></div>
+    <div class="toklbl">DOWN (−felt) — 혼탁 (FLOW·flowed 일부 일관)</div>
+    <div class="toks"><span class="tok">FLOW</span><span class="tok">flowed</span><span class="tok">weighted</span><span class="tok">вариант</span></div></div>
+
+  <div class="axq"><h4>self_label</h4>
+    <div class="toklbl">UP (+범주-명명) — 혼탁: 범용 과제 어휘</div>
+    <div class="toks up"><span class="tok">text</span><span class="tok">uses</span><span class="tok">keywords</span><span class="tok">brainstorm</span><span class="tok">Generate</span></div>
+    <div class="toklbl">DOWN (−추상-발생) — 오히려 일관</div>
+    <div class="toks"><span class="tok">metastability</span><span class="tok">paradoxical</span><span class="tok">resonances</span><span class="tok">transcendence</span><span class="tok">flickering</span><span class="tok">exquisitely</span></div></div>
+
+</section>
+
+<footer>
+  <span class="seal-mini">報</span> CVV Report — 자기-개념 5축 1차 검증 · 2026-06-10<br>
+  파이프라인 원형: Anthropic, "Emotion Concepts and their Function in a Large Language Model" (2026)<br>
+  산출: cvv/out/{m04_profile, m06_ood_top, m07_logit_lens, m13_geometry}.json · CVV_REPORT.md
+</footer>
+
+</div>
+<script>
+  const links=[...document.querySelectorAll("#pnav a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}
+  }),{rootMargin:"-20% 0px -70% 0px"});
+  secs.forEach(s=>spy.observe(s));
+</script>
+</body>
+</html>
